@@ -36,7 +36,7 @@ import seaborn as sns
 
 ```python
 # Step 2: Load the Dataset
-API_KEY = "YOUR_API_KEY"
+API_KEY = "API_KEY" //GET API  
 url = "https://newsapi.org/v2/everything"
 
 params = {

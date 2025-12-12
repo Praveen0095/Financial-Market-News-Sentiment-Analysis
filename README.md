@@ -36,10 +36,10 @@ import seaborn as sns
 
 ```python
 # Step 2: Load the Dataset
-url = "https://raw.githubusercontent.com/YBIFoundation/Dataset/main/Financial%20Market%20News.csv"
+url = ""
 df = pd.read_csv(url)
 ```
-**Load the Dataset:** The dataset is loaded from the provided URL into a pandas DataFrame.
+**Load the Dataset:** The dataset is loaded into a pandas DataFrame.
 
 ```python
 # Step 3: Data Preprocessing

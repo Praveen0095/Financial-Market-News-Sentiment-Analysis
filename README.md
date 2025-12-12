@@ -36,8 +36,30 @@ import seaborn as sns
 
 ```python
 # Step 2: Load the Dataset
-url = ""
-df = pd.read_csv(url)
+API_KEY = "YOUR_API_KEY"
+url = "https://newsapi.org/v2/everything"
+
+params = {
+    "q": "financial markets OR stocks OR economy",
+    "language": "en",
+    "sortBy": "publishedAt",
+    "pageSize": 100,
+    "apiKey": API_KEY
+}
+
+response = requests.get(url, params=params)
+data = response.json()
+
+# Parse JSON into DataFrame
+articles = [
+    {
+        "Date": item["publishedAt"],
+        "News": item["title"] + " " + (item["description"] or "")
+    }
+    for item in data["articles"]
+]
+
+df = pd.DataFrame(articles)
 ```
 **Load the Dataset:** The dataset is loaded into a pandas DataFrame.
 

@@ -34,6 +34,8 @@ import seaborn as sns
 ```
  **Importing Libraries:** The necessary libraries such as `pandas` for data manipulation, `TextBlob` for sentiment analysis, and `matplotlib` & `seaborn` for visualization are imported.
 
+**Load the Dataset:** The dataset is loaded into a pandas DataFrame.
+
 ```python
 # Step 2: Load the Dataset
 API_KEY = "API_KEY" //GET API  
@@ -61,14 +63,17 @@ articles = [
 
 df = pd.DataFrame(articles)
 ```
-**Load the Dataset:** The dataset is loaded into a pandas DataFrame.
+**Data Preprocessing:** We drop any missing values to clean the data.
 
 ```python
 # Step 3: Data Preprocessing
 # Drop any rows with missing values
 df.dropna(inplace=True)
 ```
- **Data Preprocessing:** We drop any missing values to clean the data.
+ 
+ **Sentiment Analysis:** 
+   - We define functions to calculate `Subjectivity` and `Polarity` using TextBlob.
+   - Based on the polarity score, sentiment is classified as 'Positive', 'Neutral', or 'Negative'.
 
  ```python
 # Step 4: Sentiment Analysis
@@ -96,9 +101,9 @@ def get_sentiment(score):
 # Adding a column for sentiment
 df['Sentiment'] = df['Polarity'].apply(get_sentiment)
 ```
-**Sentiment Analysis:** 
-   - We define functions to calculate `Subjectivity` and `Polarity` using TextBlob.
-   - Based on the polarity score, sentiment is classified as 'Positive', 'Neutral', or 'Negative'.
+**Exploratory Data Analysis (EDA):** 
+   - We visualize the distribution of sentiments using a count plot.
+   - Further, we examine sentiment trends over time.
 
 ```python
 # Step 5: Exploratory Data Analysis (EDA)
@@ -111,9 +116,10 @@ plt.show()
 # Display the first few rows of the dataframe
 df.head()
 ```
-**Exploratory Data Analysis (EDA):** 
-   - We visualize the distribution of sentiments using a count plot.
-   - Further, we examine sentiment trends over time.
+ **Results and Conclusion:**
+   - Sentiment distribution is displayed.
+   - Sentiment trends over time are plotted.
+     
      
 ```python
 # Step 6: Sentiment Analysis Results
@@ -129,10 +135,7 @@ plt.xlabel('Date')
 plt.ylabel('Frequency')
 plt.show()
 ```
- **Results and Conclusion:**
-   - Sentiment distribution is displayed.
-   - Sentiment trends over time are plotted.
-     
+
 ```python
 # Step 7: Conclusion
 # Summary statistics
